@@ -1,0 +1,36 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Product Details</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <td>@Html.DisplayNameFor(x => x.ProductName)</td>
+        <td>
+            <input asp-for="ProductName" readonly class="form-control" placeholder="Enter Product Name" />
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(x => x.Qty)</td>
+        <td>
+            <input asp-for="Qty" class="form-control" readonly placeholder="Enter Product Qty" />
+         
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(x => x.Price)</td>
+        <td>
+            <input asp-for="Price" readonly class="form-control" placeholder="Enter Product Price" />
+          
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <a asp-action="Edit" asp-controller="Products" class="btn btn-info" asp-route-id="@Model.ProductId">Edit</a>
+            <a asp-action="Index" asp-controller="Products" class="btn btn-info" >Back to List</a>
+
+        </td>
+    </tr>
+</table>

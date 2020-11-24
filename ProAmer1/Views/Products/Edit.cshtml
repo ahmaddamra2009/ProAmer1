@@ -1,0 +1,46 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Product</h1>
+<form asp-action="Edit" asp-controller="Products" method="post">
+   @Html.HiddenFor(x=>x.ProductId)
+    
+    <table class="table table-bordered">
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.ProductName)</td>
+            <td>
+                <input asp-for="ProductName" class="form-control" placeholder="Enter Product Name" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.Qty)</td>
+            <td>
+                <input asp-for="Qty" class="form-control" placeholder="Enter Product Qty" />
+                <span asp-validation-for="Qty" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.Price)</td>
+            <td>
+                <input asp-for="Price" class="form-control" placeholder="Enter Product Price" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="btnUpdate" value="Update" class="btn btn-outline-success" />
+                <a asp-action="Index" asp-controller="Products" class="btn btn-danger">Cancel</a>
+            </td>
+        </tr>
+    </table>
+</form>
+
+
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}

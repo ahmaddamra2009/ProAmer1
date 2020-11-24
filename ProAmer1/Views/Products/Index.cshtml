@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Product>
+@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Index";
+}
+<h3>Welcome @Context.Session.GetString("name")</h3>
+<h1>All Products</h1>
+<a asp-action="Create" asp-controller="Products" class="btn btn-outline-primary" >Create</a>
+
+@if (Model.Any())
+{
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>@Html.DisplayNameFor(x => x.ProductName)</th>
+        <th>@Html.DisplayNameFor(x => x.Price)</th>
+        <th>Operations</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@item.Price</td>
+            <td>
+                <a asp-action="Details" asp-controller="Products" class="btn btn-outline-primary" asp-route-id="@item.ProductId">More</a>
+                <a asp-action="Delete" asp-controller="Products" class="btn btn-outline-danger" asp-route-id="@item.ProductId">Delete</a>
+                <a asp-action="Edit" asp-controller="Products" class="btn btn-outline-info" asp-route-id="@item.ProductId">Edit</a>
+
+            </td>
+        </tr>
+
+    }
+</table>
+}
+else
+{
+<div class="container">
+    Click here to create new product
+    <a asp-action="Create" asp-controller="Products" class="btn btn-outline-primary">Create</a>
+</div>
+}
+
+
